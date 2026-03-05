@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>COPY AVANCADO — Mentoria ao Vivo</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="ato-1">
+
+  <!-- Flash overlay para a transicao BOOM -->
+  <div class="flash-overlay" aria-hidden="true"></div>
+
+  <!-- Som da transicao (opcional) -->
+  <audio id="boom-audio" preload="auto">
+    <!-- <source src="assets/audio/boom.mp3" type="audio/mpeg" /> -->
+  </audio>
+
+  <!-- ============================================================
+       ATO 1 — PRE-PITCH: foco total no video
+       ============================================================ -->
+  <section class="ato-1-wrapper">
+    <h1 class="headline-ato1">
+      Voce aprendeu as tecnicas.<br />
+      <span>A maioria para aqui.</span>
+    </h1>
+
+    <div class="player-wrapper">
+      <!--
+        SUBSTITUIR pelo embed do player real (Vimeo, Panda Video, YouTube).
+        O player DEVE expor uma API de tempo (timeupdate ou similar).
+        Veja script.js para instrucoes de integracao.
+      -->
+      <iframe
+        id="vsl-player"
+        src="https://www.youtube.com/embed/dQw4w9WgXcQ?enablejsapi=1&controls=1&rel=0&modestbranding=1"
+        title="VSL — Mentoria Copy Avancado"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <div class="progress-bar-wrapper" aria-hidden="true">
+      <div class="progress-bar" id="progress-bar"></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ATO 2 — POS-PITCH: conversao total (oculto ate o BOOM)
+       ============================================================ -->
+  <div class="ato-2-wrapper" id="ato2">
+
+    <!-- Barra de urgencia fixa -->
+    <div class="barra-urgencia secao-ato2" id="barra-urgencia">
+      <span class="urgencia-icone">&#9670;</span>
+      Restam <strong id="vagas-restantes">8</strong> vagas na turma de Abril
+      <span class="urgencia-icone">&#9670;</span>
+    </div>
+
+    <!-- Player menor em modo sticky (esconde no ato 1, aparece no ato 2) -->
+    <div class="player-sticky-wrapper" id="player-sticky">
+      <iframe
+        id="vsl-player-sticky"
+        src=""
+        title="VSL — continua assistindo"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <!-- Linha divisoria vermelha -->
+    <div class="linha-vermelha secao-ato2"></div>
+
+    <!-- 4.1 Headline da Oferta -->
+    <section class="secao secao-ato2 secao-headline-oferta">
+      <div class="container">
+        <h2 class="headline-oferta">
+          O que separa quem aprende copy<br />
+          de quem fatura com ele.
+        </h2>
+      </div>
+    </section>
+
+    <!-- 4.2 O Gap Honesto -->
+    <section class="secao secao-ato2 secao-gap bg-cinza">
+      <div class="container">
+        <p class="gap-texto">
+          O curso te deu o mapa.<br />
+          A mentoria te leva pelo caminho — ao lado de quem ja percorreu.
+        </p>
+        <p class="gap-texto">
+          Copiar formulas funciona ate certo ponto.<br />
+          Depois disso, o que evolui e o julgamento.
+        </p>
+        <p class="gap-texto">
+          E julgamento so se desenvolve com pratica e feedback real.
+        </p>
+      </div>
+    </section>
+
+    <!-- 4.3 O Que E a Mentoria -->
+    <section class="secao secao-ato2 secao-o-que-e">
+      <div class="container">
+        <h3 class="subtitulo-secao">O que e a mentoria</h3>
+        <div class="cards-grid">
+          <div class="card">
+            <div class="card-icone">&#128337;</div>
+            <h4>2x por mes, ao vivo</h4>
+            <p>Sessoes ao vivo via Zoom, com data e hora fixas para voce se planejar.</p>
+          </div>
+          <div class="card">
+            <div class="card-icone">&#128101;</div>
+            <h4>Grupos de ate 20 pessoas</h4>
+            <p>Turma pequena o suficiente para todo mundo ter voz e receber feedback direto.</p>
+          </div>
+          <div class="card">
+            <div class="card-icone">&#9200;</div>
+            <h4>90 minutos por sessao</h4>
+            <p>Tempo suficiente para revisao de copies, perguntas abertas e exercicios ao vivo.</p>
+          </div>
+          <div class="card">
+            <div class="card-icone">&#128196;</div>
+            <h4>Revisao do seu copy</h4>
+            <p>Voce envia, nos analisamos em tempo real. Feedback especifico, nao generico.</p>
+          </div>
+          <div class="card">
+            <div class="card-icone">&#128197;</div>
+            <h4>3 meses de acesso</h4>
+            <p>Tempo real para aplicar, errar, ajustar e colher resultado.</p>
+          </div>
+          <div class="card">
+            <div class="card-icone">&#128172;</div>
+            <h4>Comunidade no grupo</h4>
+            <p>Acesso ao grupo exclusivo para duvidas entre as sessoes.</p>
+          </div>
+        </div>
+
+        <!-- ⚠️ Preencher com dados reais antes do lançamento -->
+      </div>
+    </section>
+
+    <!-- 4.4 Para Quem E / Nao E -->
+    <section class="secao secao-ato2 secao-para-quem bg-cinza">
+      <div class="container">
+        <h3 class="subtitulo-secao">Para quem e — e para quem nao e</h3>
+        <div class="para-quem-grid">
+          <div class="para-quem para-quem--sim">
+            <h4 class="para-quem-titulo para-quem-titulo--sim">&#10003; Para quem e</h4>
+            <ul>
+              <li>Quem terminou (ou esta terminando) o curso base</li>
+              <li>Quem quer validacao externa antes de lançar copies para clientes</li>
+              <li>Quem aprende melhor com feedback do que com conteudo solo</li>
+            </ul>
+          </div>
+          <div class="para-quem para-quem--nao">
+            <h4 class="para-quem-titulo para-quem-titulo--nao">&#10005; Para quem nao e</h4>
+            <ul>
+              <li>Quem ainda nao passou pelo material do curso base</li>
+              <li>Quem busca um atalho sem praticar</li>
+              <li>Quem nao tem tempo para participar das sessoes ao vivo</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4.5 Depoimentos -->
+    <section class="secao secao-ato2 secao-depoimentos">
+      <div class="container">
+        <h3 class="subtitulo-secao">Resultados reais. Com numeros.</h3>
+        <div class="depoimentos-grid">
+
+          <div class="depoimento">
+            <div class="depoimento-foto" aria-hidden="true">
+              <!-- <img src="assets/img/depoimentos/ana.jpg" alt="Ana Lima" /> -->
+              <div class="depoimento-foto-placeholder">AL</div>
+            </div>
+            <blockquote>
+              "Em 30 dias aplicando o feedback da mentoria, fechei meu primeiro cliente de R$ 2.400."
+            </blockquote>
+            <cite>Ana Lima — nicho: e-commerce, Sao Paulo / SP</cite>
+          </div>
+
+          <div class="depoimento">
+            <div class="depoimento-foto" aria-hidden="true">
+              <div class="depoimento-foto-placeholder">MR</div>
+            </div>
+            <blockquote>
+              "Depois da segunda sessao consegui reescrever uma pagina de vendas e triplicar a taxa de cliques do cliente."
+            </blockquote>
+            <cite>Marcos Rocha — nicho: infoprodutos, Belo Horizonte / MG</cite>
+          </div>
+
+          <div class="depoimento">
+            <div class="depoimento-foto" aria-hidden="true">
+              <div class="depoimento-foto-placeholder">JF</div>
+            </div>
+            <blockquote>
+              "Tinha medo de cobrar acima de R$ 500 por projeto. Com o feedback direto da mentoria percebi onde estava deixando dinheiro na mesa."
+            </blockquote>
+            <cite>Julia Ferreira — nicho: saude e bem-estar, Curitiba / PR</cite>
+          </div>
+
+        </div>
+        <!-- ⚠️ Inserir depoimentos reais antes do lançamento -->
+      </div>
+    </section>
+
+    <!-- 4.6 Preco + Ancoragem -->
+    <section class="secao secao-ato2 secao-preco bg-cinza">
+      <div class="container">
+        <h3 class="subtitulo-secao">Investimento</h3>
+
+        <div class="preco-wrapper">
+          <div class="ancoragem">
+            <p class="ancoragem-texto">
+              Uma proposta mal precificada pode custar meses de trabalho.<br />
+              Um cliente perdido por copy fraco custa mais do que qualquer mentoria.
+            </p>
+          </div>
+
+          <div class="preco-box">
+            <p class="preco-antigo">De <s>R$ 1.997</s></p>
+            <p class="preco-atual">R$ 997</p>
+            <p class="preco-parcelamento">ou 12x de <strong>R$ 97,08</strong> sem juros</p>
+            <p class="preco-incluso">Inclui: 6 sessoes ao vivo + comunidade + 3 meses de acesso</p>
+            <!-- ⚠️ Substituir pelos valores reais -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4.7 Garantia -->
+    <section class="secao secao-ato2 secao-garantia">
+      <div class="container">
+        <div class="garantia-box">
+          <div class="garantia-icone" aria-hidden="true">&#128737;</div>
+          <div class="garantia-texto">
+            <h3>7 dias de garantia incondicional.</h3>
+            <p>Se nao for para voce, devolvemos tudo.<br />Sem burocracia, sem perguntas.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4.8 CTA + Recusa Consciente -->
+    <section class="secao secao-ato2 secao-cta">
+      <div class="container">
+        <!--
+          SUBSTITUIR o href pelo link real da plataforma (Hotmart, Kiwify, etc.)
+        -->
+        <a href="#checkout" class="btn-cta" id="btn-cta">
+          QUERO ENTRAR NA MENTORIA
+        </a>
+        <a href="#" class="link-recusa" id="link-recusa">
+          Prefiro continuar sem feedback por enquanto
+        </a>
+      </div>
+    </section>
+
+  </div><!-- /ato-2-wrapper -->
+
+  <!-- ============================================================
+       PAINEL ADMIN — acessivel via ?admin=true na URL
+       ============================================================ -->
+  <div class="admin-panel" id="admin-panel">
+    <div class="admin-header">
+      <span>Painel Admin</span>
+      <button class="admin-toggle" id="admin-toggle" title="Minimizar">&#8722;</button>
+    </div>
+    <div class="admin-body" id="admin-body">
+      <div class="admin-field">
+        <label for="admin-timestamp">Timestamp do pitch (segundos)</label>
+        <input type="number" id="admin-timestamp" value="872" min="0" />
+        <button class="admin-btn" id="admin-salvar-ts">Salvar</button>
+      </div>
+
+      <div class="admin-field">
+        <label for="admin-vagas">Vagas restantes</label>
+        <input type="number" id="admin-vagas" value="8" min="0" />
+        <button class="admin-btn" id="admin-salvar-vagas">Atualizar</button>
+      </div>
+
+      <hr class="admin-hr" />
+
+      <div class="admin-acoes">
+        <button class="admin-btn admin-btn--destaque" id="admin-forcarboom">&#9889; Forcar Boom</button>
+        <button class="admin-btn" id="admin-ato1">Preview Ato 1</button>
+        <button class="admin-btn" id="admin-ato2">Preview Ato 2</button>
+      </div>
+
+      <p class="admin-hint">Acesse esta pagina com <code>?admin=true</code></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
