@@ -119,21 +119,21 @@ body.ato-1 .ato-1-wrapper {
   border: none;
 }
 
-/* Barra de progresso */
-.progress-bar-wrapper {
-  width: min(var(--max-width), 92vw);
-  height: 3px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 2px;
-  overflow: hidden;
-  margin-top: -0.5rem;
+/* Placeholder visual do VTurb (exibido antes de inserir o embed real) */
+.vturb-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1a1a1a;
+  border: 2px dashed #444;
+  border-radius: 4px;
 }
 
-.progress-bar {
-  height: 100%;
-  width: 0%;
-  background: var(--vermelho);
-  transition: width 1s linear;
+.vturb-placeholder span {
+  color: #555;
+  font-family: var(--fonte-corpo);
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
 }
 
 /* ============================================================
@@ -217,31 +217,6 @@ body.ato-2 .ato-2-wrapper {
   font-size: 0.6rem;
   margin-inline: 0.5rem;
   vertical-align: middle;
-}
-
-/* Player sticky no canto inferior direito */
-.player-sticky-wrapper {
-  display: none;
-  position: fixed;
-  bottom: 1.5rem;
-  right: 1.5rem;
-  width: 280px;
-  aspect-ratio: 16 / 9;
-  background: #000;
-  border-radius: 6px;
-  overflow: hidden;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
-  z-index: 200;
-}
-
-.player-sticky-wrapper.ativo {
-  display: block;
-}
-
-.player-sticky-wrapper iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
 }
 
 /* ============================================================

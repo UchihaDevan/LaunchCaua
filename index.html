@@ -30,24 +30,28 @@
       <span>A maioria para aqui.</span>
     </h1>
 
-    <div class="player-wrapper">
-      <!--
-        SUBSTITUIR pelo embed do player real (Vimeo, Panda Video, YouTube).
-        O player DEVE expor uma API de tempo (timeupdate ou similar).
-        Veja script.js para instrucoes de integracao.
-      -->
-      <iframe
-        id="vsl-player"
-        src="https://www.youtube.com/embed/dQw4w9WgXcQ?enablejsapi=1&controls=1&rel=0&modestbranding=1"
-        title="VSL — Mentoria Copy Avancado"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-      ></iframe>
-    </div>
+    <!--
+      EMBED VTURB — cole aqui o codigo gerado pelo VTurb.
+      O codigo tem o formato abaixo. Substitua TODO o bloco pelo seu embed real.
 
-    <div class="progress-bar-wrapper" aria-hidden="true">
-      <div class="progress-bar" id="progress-bar"></div>
+      IMPORTANTE: no painel do VTurb, em "Botao de Acao", configure a acao
+      como JavaScript e insira:   dispararBoom();
+      Isso vai disparar a transicao da pagina no momento certo do video.
+
+      <div id="vid_XXXXXXXX" style="position:relative;width:100%;padding:56.25% 0 0;">
+        <img id="thumb_XXXXXXXX" src="URL_DA_THUMBNAIL"
+             style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;" />
+        <iframe id="hotmart-player-XXXXXXXX" frameborder="0"
+                allow="autoplay; fullscreen; picture-in-picture" allowfullscreen
+                src="https://player.vturb.com.br/v1/lst/XXXXXXXX"
+                style="border:none;position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+      </div>
+      <script src="https://scripts.converteai.net/XXXXXXXX/players/XXXXXXXX/player.js" async></script>
+    -->
+
+    <!-- Placeholder visual enquanto o embed real nao e inserido -->
+    <div class="player-wrapper vturb-placeholder" id="vturb-placeholder">
+      <span>Cole o embed do VTurb aqui</span>
     </div>
   </section>
 
@@ -61,18 +65,6 @@
       <span class="urgencia-icone">&#9670;</span>
       Restam <strong id="vagas-restantes">8</strong> vagas na turma de Abril
       <span class="urgencia-icone">&#9670;</span>
-    </div>
-
-    <!-- Player menor em modo sticky (esconde no ato 1, aparece no ato 2) -->
-    <div class="player-sticky-wrapper" id="player-sticky">
-      <iframe
-        id="vsl-player-sticky"
-        src=""
-        title="VSL — continua assistindo"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-      ></iframe>
     </div>
 
     <!-- Linha divisoria vermelha -->
@@ -276,12 +268,6 @@
       <button class="admin-toggle" id="admin-toggle" title="Minimizar">&#8722;</button>
     </div>
     <div class="admin-body" id="admin-body">
-      <div class="admin-field">
-        <label for="admin-timestamp">Timestamp do pitch (segundos)</label>
-        <input type="number" id="admin-timestamp" value="872" min="0" />
-        <button class="admin-btn" id="admin-salvar-ts">Salvar</button>
-      </div>
-
       <div class="admin-field">
         <label for="admin-vagas">Vagas restantes</label>
         <input type="number" id="admin-vagas" value="8" min="0" />
