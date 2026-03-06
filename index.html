@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,11 +8,14 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&family=DM+Serif+Display:ital@0;1&display=swap"
+    rel="stylesheet" />
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body class="ato-1">
 
   <!-- Flash overlay para a transicao BOOM -->
@@ -30,30 +34,10 @@
       Voce aprendeu as tecnicas.<br />
       <span>A maioria para aqui.</span>
     </h1>
-
-    <!--
-      EMBED VTURB — cole aqui o codigo gerado pelo VTurb.
-      O codigo tem o formato abaixo. Substitua TODO o bloco pelo seu embed real.
-
-      IMPORTANTE: no painel do VTurb, em "Botao de Acao", configure a acao
-      como JavaScript e insira:   dispararBoom();
-      Isso vai disparar a transicao da pagina no momento certo do video.
-
-      <div id="vid_XXXXXXXX" style="position:relative;width:100%;padding:56.25% 0 0;">
-        <img id="thumb_XXXXXXXX" src="URL_DA_THUMBNAIL"
-             style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;" />
-        <iframe id="hotmart-player-XXXXXXXX" frameborder="0"
-                allow="autoplay; fullscreen; picture-in-picture" allowfullscreen
-                src="https://player.vturb.com.br/v1/lst/XXXXXXXX"
-                style="border:none;position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
-      </div>
-      <script src="https://scripts.converteai.net/XXXXXXXX/players/XXXXXXXX/player.js" async></script>
-    -->
-
-    <!-- Placeholder visual enquanto o embed real nao e inserido -->
-    <div class="player-wrapper vturb-placeholder" id="vturb-placeholder">
-      <span>Cole o embed do VTurb aqui</span>
-    </div>
+    <vturb-smartplayer id="vid-69ab0caf01dc41aee18c43bd"
+      style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"></vturb-smartplayer>
+    <script
+      type="text/javascript"> var s = document.createElement("script"); s.src = "https://scripts.converteai.net/be5406c6-c12d-44a1-a5c0-7e3cecdadb83/players/69ab0caf01dc41aee18c43bd/v4/player.js", s.async = !0, document.head.appendChild(s); </script>
   </section>
 
   <!-- ============================================================
@@ -186,7 +170,8 @@
               <div class="depoimento-foto-placeholder">MR</div>
             </div>
             <blockquote>
-              "Depois da segunda sessao consegui reescrever uma pagina de vendas e triplicar a taxa de cliques do cliente."
+              "Depois da segunda sessao consegui reescrever uma pagina de vendas e triplicar a taxa de cliques do
+              cliente."
             </blockquote>
             <cite>Marcos Rocha — nicho: infoprodutos, Belo Horizonte / MG</cite>
           </div>
@@ -196,7 +181,8 @@
               <div class="depoimento-foto-placeholder">JF</div>
             </div>
             <blockquote>
-              "Tinha medo de cobrar acima de R$ 500 por projeto. Com o feedback direto da mentoria percebi onde estava deixando dinheiro na mesa."
+              "Tinha medo de cobrar acima de R$ 500 por projeto. Com o feedback direto da mentoria percebi onde estava
+              deixando dinheiro na mesa."
             </blockquote>
             <cite>Julia Ferreira — nicho: saude e bem-estar, Curitiba / PR</cite>
           </div>
@@ -289,4 +275,5 @@
 
   <script src="script.js"></script>
 </body>
+
 </html>
