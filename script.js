@@ -7,73 +7,52 @@ const CONFIG = {
 
   // ATENÇÃO: Configure aqui exato em que o Pitch acontece (em segundos)
   // Ex: Se ocorrer aos 12 minutos e 30 segundos, coloque 750 (12 * 60 + 30)
-  tempoDoPitch: 250 // 4 minutos e 10 segundos
+  tempoDoPitch: 210 // 4 minutos e 10 segundos
 };
 
 /* ============================================================
    ESTADO GLOBAL
    ============================================================ */
-let boomDisparado = false;
-
-/* ============================================================
+let boomDisparado = false;/* ============================================================
    INICIALIZACAO
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
   atualizarVagas(CONFIG.vagasRestantes);
   iniciarAdmin();
   adicionarBotaoTeste();
-  monitorarVídeoVTurb();
+  observarRevelacaoVTurb(); // Inicia o observador
 });
 
 /* ============================================================
-   MONITORAMENTO DO VÍDEO VTURB (MÉTODO À PROVA DE FALHAS)
+   OBSERVADOR DO VTURB (MÉTODO MUTATION OBSERVER)
    ============================================================ */
-function monitorarVídeoVTurb() {
-  // O seu vídeo do VTurb injeta um objeto global chamado 'smartplayer' 
-  // com uma API nativa (on ou instances)
-  let checador = setInterval(() => {
-    // Busca a instância do player no DOM ou no Window
-    const vidId = 'vid-69ab0caf01dc41aee18c43bd';
-    const playerEl = document.getElementById(vidId);
+function observarRevelacaoVTurb() {
+  const ato2El = document.getElementById('ato2');
+  if (!ato2El) return;
 
-    // Tenta acessar objeto global caso ele exponha
-    const vturb = window.smartplayer || window.vturbPlayer || null;
-
-    if (playerEl || vturb) {
-      console.log('Vídeo VTurb detectado, iniciando monitoramento de tempo...');
-      clearInterval(checador);
-
-      // Checa o tempo de forma contínua e silenciosa
-      setInterval(() => {
-        if (boomDisparado) return;
-
-        // O VTurb quase sempre embeda usando a própria tag de vídeo ou um iframe estruturado. 
-        // Vamos tentar pegar o <video> se existir
-        let videoTag = document.querySelector('vturb-smartplayer video');
-        if (videoTag) {
-          if (videoTag.currentTime >= CONFIG.tempoDoPitch) {
-            console.log('Tempo do pitch alcançado!');
-            dispararBoom();
-          }
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+        const displayStyle = window.getComputedStyle(ato2El).display;
+        // Quando o VTurb remover o "display: none" (mudando para block)
+        if (displayStyle !== 'none' && !boomDisparado) {
+          ativarEfeitosDoPitch();
         }
-      }, 500); // Check 2x por segundo
-    }
-  }, 1000);
+      }
+    });
+  });
+
+  observer.observe(ato2El, { attributes: true });
 }
 
 /* ============================================================
-   O BOOM — chamado pelo "Botao de Acao" do VTurb ou pelo Monitoramento
-
-   No painel do VTurb, em Botao de Acao > JavaScript, insira:
-       dispararBoom();
-
-   Essa funcao e global e pode ser chamada de qualquer lugar.
+   EFEITOS DO BOOM (Som, Flash, Classes)
    ============================================================ */
-function dispararBoom() {
+function ativarEfeitosDoPitch() {
   if (boomDisparado) return;
   boomDisparado = true;
 
-  console.log("💥 BOOM DISPARADO!");
+  console.log("💥 CONTEÚDO REVELADO PELO VTURB!");
 
   const flash = document.querySelector('.flash-overlay');
 
@@ -91,7 +70,7 @@ function dispararBoom() {
     if (flash) flash.classList.remove('ativo');
     document.body.classList.replace('ato-1', 'ato-2');
     revelarSecoesCascata();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollBy({ top: 300, behavior: 'smooth' });
   }, 120);
 }
 
@@ -154,7 +133,9 @@ function adicionarBotaoTeste() {
   `;
   btn.addEventListener('click', () => {
     boomDisparado = false; // permite re-disparo no modo de teste
-    dispararBoom();
+    // Simula a mudanca feita pelo VTurb para testar o observer
+    const ato2 = document.getElementById('ato2');
+    if (ato2) ato2.style.display = 'block';
     btn.remove();
   });
   document.body.appendChild(btn);

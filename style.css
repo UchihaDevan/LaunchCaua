@@ -27,7 +27,9 @@
 /* ============================================================
    RESET & BASE
    ============================================================ */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -80,10 +82,6 @@ body.ato-1 {
   padding: 2rem 1rem;
 }
 
-body.ato-1 .ato-2-wrapper {
-  display: none;
-}
-
 body.ato-1 .ato-1-wrapper {
   display: flex;
   flex-direction: column;
@@ -110,9 +108,18 @@ body.ato-1 .ato-1-wrapper::before {
   z-index: 0;
 }
 
-body.ato-1 .ato-1-wrapper > * {
+body.ato-1 .ato-1-wrapper>* {
   position: relative;
   z-index: 1;
+}
+
+/* No Ato 2 o wrapper do video deve se manter visível, porém ajustado */
+body.ato-2 .ato-1-wrapper {
+  display: flex !important;
+  /* Força exibir o video mesmo no Ato 2 */
+  padding-bottom: 3rem;
+  margin-top: -2rem;
+  /* Sobe ele um pouco para encaixar com o conteúdo de baixo */
 }
 
 /* Headline do Ato 1 */
@@ -183,9 +190,17 @@ body.ato-1 .ato-1-wrapper > * {
 }
 
 @keyframes flash-anim {
-  0%   { opacity: 1; }
-  50%  { opacity: 0.9; }
-  100% { opacity: 0; }
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.9;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
 
 /* ============================================================
@@ -203,19 +218,17 @@ body.ato-2::before {
   inset: 0;
   background:
     radial-gradient(ellipse 80% 50% at 50% -20%, var(--vermelho-suave) 0%, transparent 60%),
-    radial-gradient(circle at 15% 50%, rgba(255,51,51,0.05) 0%, transparent 40%),
-    radial-gradient(circle at 85% 90%, rgba(255,51,51,0.08) 0%, transparent 50%);
+    radial-gradient(circle at 15% 50%, rgba(255, 51, 51, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 85% 90%, rgba(255, 51, 51, 0.08) 0%, transparent 50%);
   pointer-events: none;
   z-index: 0;
 }
 
 body.ato-2 .ato-1-wrapper {
-  display: none;
+  /* Removemos o display: none para o video continuar aparecendo */
 }
 
 body.ato-2 .ato-2-wrapper {
-  display: block;
-  padding-top: 3rem;
   position: relative;
   z-index: 1;
 }
@@ -259,8 +272,13 @@ body.ato-2 .ato-2-wrapper {
 }
 
 @keyframes shimmer-bar {
-  0%   { background-position: 0% center; }
-  100% { background-position: 200% center; }
+  0% {
+    background-position: 0% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
 }
 
 .urgencia-icone {
@@ -446,7 +464,7 @@ body.ato-2 .ato-2-wrapper {
 }
 
 .depoimento {
-  background: linear-gradient(145deg, rgba(30,30,30,0.7), rgba(15,15,15,0.95));
+  background: linear-gradient(145deg, rgba(30, 30, 30, 0.7), rgba(15, 15, 15, 0.95));
   border-radius: 16px;
   padding: 2.5rem 2rem;
   border: 1px solid rgba(255, 255, 255, 0.06);
@@ -491,7 +509,7 @@ body.ato-2 .ato-2-wrapper {
   font-size: 1.4rem;
   color: var(--branco);
   background: linear-gradient(135deg, #ff4444, #800000);
-  box-shadow: inset 0 2px 4px rgba(255,255,255,0.2);
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.2);
 }
 
 .depoimento blockquote {
@@ -536,7 +554,7 @@ body.ato-2 .ato-2-wrapper {
 }
 
 .preco-box {
-  background: linear-gradient(180deg, rgba(40,40,40,0.8) 0%, rgba(20,20,20,0.95) 100%);
+  background: linear-gradient(180deg, rgba(40, 40, 40, 0.8) 0%, rgba(20, 20, 20, 0.95) 100%);
   border-radius: 16px;
   padding: 3rem 2.5rem;
   text-align: center;
@@ -551,7 +569,9 @@ body.ato-2 .ato-2-wrapper {
 .preco-box::before {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 4px;
   background: linear-gradient(90deg, transparent, #ff3333, transparent);
 }
@@ -601,7 +621,7 @@ body.ato-2 .ato-2-wrapper {
   display: flex;
   align-items: center;
   gap: 2.5rem;
-  background: linear-gradient(90deg, rgba(20,20,20,0.8), rgba(30,30,30,0.6));
+  background: linear-gradient(90deg, rgba(20, 20, 20, 0.8), rgba(30, 30, 30, 0.6));
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-left: 4px solid var(--vermelho);
   border-radius: 16px;
@@ -666,15 +686,23 @@ body.ato-2 .ato-2-wrapper {
   border: 1px solid rgba(255, 100, 100, 0.4);
   cursor: pointer;
   transition: all var(--transicao-media);
-  box-shadow: 0 8px 24px rgba(255, 51, 51, 0.3), inset 0 2px 4px rgba(255,255,255,0.2);
+  box-shadow: 0 8px 24px rgba(255, 51, 51, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.2);
   animation: pulse-red 2.5s infinite;
   text-transform: uppercase;
 }
 
 @keyframes pulse-red {
-  0%   { box-shadow: 0 0 0 0 rgba(224, 32, 32, 0.5); }
-  70%  { box-shadow: 0 0 0 14px rgba(224, 32, 32, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(224, 32, 32, 0); }
+  0% {
+    box-shadow: 0 0 0 0 rgba(224, 32, 32, 0.5);
+  }
+
+  70% {
+    box-shadow: 0 0 0 14px rgba(224, 32, 32, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(224, 32, 32, 0);
+  }
 }
 
 .btn-cta:hover {
