@@ -4,6 +4,10 @@
 const CONFIG = {
   // Numero de vagas exibido na barra de urgencia
   vagasRestantes: 8,
+
+  // ATENÇÃO: Configure aqui exato em que o Pitch acontece (em segundos)
+  // Ex: Se ocorrer aos 12 minutos e 30 segundos, coloque 750 (12 * 60 + 30)
+  tempoDoPitch: 250 // 4 minutos e 10 segundos
 };
 
 /* ============================================================
@@ -18,10 +22,47 @@ document.addEventListener('DOMContentLoaded', () => {
   atualizarVagas(CONFIG.vagasRestantes);
   iniciarAdmin();
   adicionarBotaoTeste();
+  monitorarVídeoVTurb();
 });
 
 /* ============================================================
-   O BOOM — chamado pelo "Botao de Acao" do VTurb
+   MONITORAMENTO DO VÍDEO VTURB (MÉTODO À PROVA DE FALHAS)
+   ============================================================ */
+function monitorarVídeoVTurb() {
+  // O seu vídeo do VTurb injeta um objeto global chamado 'smartplayer' 
+  // com uma API nativa (on ou instances)
+  let checador = setInterval(() => {
+    // Busca a instância do player no DOM ou no Window
+    const vidId = 'vid-69ab0caf01dc41aee18c43bd';
+    const playerEl = document.getElementById(vidId);
+
+    // Tenta acessar objeto global caso ele exponha
+    const vturb = window.smartplayer || window.vturbPlayer || null;
+
+    if (playerEl || vturb) {
+      console.log('Vídeo VTurb detectado, iniciando monitoramento de tempo...');
+      clearInterval(checador);
+
+      // Checa o tempo de forma contínua e silenciosa
+      setInterval(() => {
+        if (boomDisparado) return;
+
+        // O VTurb quase sempre embeda usando a própria tag de vídeo ou um iframe estruturado. 
+        // Vamos tentar pegar o <video> se existir
+        let videoTag = document.querySelector('vturb-smartplayer video');
+        if (videoTag) {
+          if (videoTag.currentTime >= CONFIG.tempoDoPitch) {
+            console.log('Tempo do pitch alcançado!');
+            dispararBoom();
+          }
+        }
+      }, 500); // Check 2x por segundo
+    }
+  }, 1000);
+}
+
+/* ============================================================
+   O BOOM — chamado pelo "Botao de Acao" do VTurb ou pelo Monitoramento
 
    No painel do VTurb, em Botao de Acao > JavaScript, insira:
        dispararBoom();
