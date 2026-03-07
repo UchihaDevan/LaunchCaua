@@ -32,12 +32,14 @@ function dispararBoom() {
   if (boomDisparado) return;
   boomDisparado = true;
 
+  console.log("💥 BOOM DISPARADO!");
+
   const flash = document.querySelector('.flash-overlay');
 
   // 1. Som (se configurado)
   const audio = document.getElementById('boom-audio');
   if (audio && audio.src) {
-    audio.play().catch(() => {});
+    audio.play().catch(() => { });
   }
 
   // 2. Flash branco
@@ -60,6 +62,17 @@ function revelarSecoesCascata() {
     }, i * 180);
   });
 }
+
+/* ============================================================
+   ESCUTAR MENSAGENS DO VTURB (postMessage)
+   ============================================================ */
+window.addEventListener('message', function (event) {
+  // Verifica se a mensagem veio do iframe querendo disparar o boom
+  if (event.data === 'dispararBoom' || (event.data && event.data.action === 'dispararBoom')) {
+    console.log("Recebido comando do VTurb via postMessage");
+    dispararBoom();
+  }
+});
 
 /* ============================================================
    VAGAS RESTANTES
